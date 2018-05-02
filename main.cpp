@@ -15,12 +15,19 @@ int main(void)
 	DDRD = 0xff;
 	PORTD = 0xff;
 	
+	int i;	
 	while (1)
 	{
-		PORTD = 0x00;
-		_delay_ms(300);
-		PORTD = 0xff;
-		_delay_ms(300);
+		for(i=1; i<8; i++)
+		{
+			PORTD = ~(0x01 << i);
+			_delay_ms(200);			
+		}
+		for(i=1; i<8; i++)
+		{
+			PORTD = ~(0x80 >> i);
+			_delay_ms(200);
+		}
 	}
 }
 
